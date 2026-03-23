@@ -20,11 +20,27 @@ class HealthKitManager {
         }
 
         let typesToRead: Set<HKObjectType> = [
+
+            // ❤️ Heart & Stress
             HKObjectType.quantityType(forIdentifier: .heartRate)!,
-            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!, // stress
+            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!,
+
+            // 🏃 Activity
             HKObjectType.quantityType(forIdentifier: .stepCount)!,
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+
+            // 😴 Sleep
             HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!,
-            
+
+            // 🫁 Respiratory (nivel pro)
+            HKObjectType.quantityType(forIdentifier: .respiratoryRate)!,
+
+            // 🧍 Balance / gait (MUY diferencial)
+            HKObjectType.quantityType(forIdentifier: .appleWalkingSteadiness)!,
+
+            // 🌡️ Temperature (opcional)
+            HKObjectType.quantityType(forIdentifier: .bodyTemperature)!
         ]
 
         healthStore.requestAuthorization(toShare: [], read: typesToRead) { success, error in
